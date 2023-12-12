@@ -6,8 +6,8 @@
   "author": "hitalo <hitalo.2014.hs@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "js-node-dev src/app.js",
-    "typeorm": "typeorm-js-node-commonjs"
+    "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
     "class-transformer": "^0.5.1",
@@ -16,6 +16,15 @@
     "express-async-errors": "^3.1.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.17"
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typeorm": "^0.3.17",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.4",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.3.3"
   }
 }
