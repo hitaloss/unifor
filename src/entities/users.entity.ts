@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  JoinTable,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
 
 import { Playlist } from "./playlists.entity";
@@ -14,8 +20,9 @@ export class User {
   @Column()
   age: number;
 
-  @OneToMany(() => Playlist, (playlist) => playlist.user)
-  playlist: Playlist[];
+  @OneToMany(() => Playlist, (playlist) => playlist.user, { eager: true })
+  @JoinTable()
+  playlists: Playlist[];
 
   constructor() {
     if (!this.id) this.id = uuid();

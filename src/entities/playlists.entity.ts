@@ -4,6 +4,8 @@ import {
   Column,
   ManyToOne,
   ManyToMany,
+  JoinColumn,
+  JoinTable,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
 
@@ -18,10 +20,11 @@ export class Playlist {
   @Column({ length: 200 })
   name: string;
 
-  @ManyToOne(() => User, { eager: true })
+  @ManyToOne(() => User, (user) => user.playlists)
   user: User;
 
   @ManyToMany(() => Music, (music) => music.playlists, { eager: true })
+  @JoinTable()
   musics: Music[];
 
   constructor() {

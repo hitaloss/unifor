@@ -1,12 +1,19 @@
-import { Request, Response } from "express"
+import { Request, Response } from "express";
 import createUserService from "../../services/users/createUser.service";
+import { AppError } from "../../errors/appError";
 
 async function createUserController(request: Request, response: Response) {
-  const { name, age } = request.body;
+  try {
+    const { name, age } = request.body;
 
-  const createUser = await createUserService({ name, age });
+    const createUser = await createUserService({ name, age });
 
-  return response.status(201).json(createUser);
+    return response.status(201).json(createUser);
+  } catch (error) {
+    if (error instanceof AppError) {
+      throw new AppError(error.statusCode, error.message);
+    }
+  }
 }
 
 export default createUserController;

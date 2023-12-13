@@ -9,11 +9,11 @@ import deletePlaylistController from "../controllers/playlists/deletePlaylist.co
 const routes = Router();
 
 export function playlistsRoutes() {
-  routes.post("", createPlaylistController);
   routes.get("", readPlaylistsController);
+  routes.post("", createPlaylistController);
   routes.patch("/:id", updatePlaylistController);
-  routes.patch("/:id", addMusicPlaylistController);
-  routes.patch("/:id", removeMusicPlaylistController);
+  routes.patch("/addmusic/:id", addMusicPlaylistController);
+  routes.patch("/removemusic/:id", removeMusicPlaylistController);
   routes.delete("/:id", deletePlaylistController);
   return routes;
 }

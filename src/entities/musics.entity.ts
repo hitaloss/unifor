@@ -14,7 +14,7 @@ export class Music {
   @Column({ length: 200 })
   artist: string;
 
-  @ManyToMany(() => Playlist, (playlist) => playlist.musics)
+  @ManyToMany(() => Playlist)
   playlists: Playlist[];
 
   constructor() {
