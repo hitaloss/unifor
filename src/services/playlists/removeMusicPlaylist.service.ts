@@ -14,10 +14,7 @@ async function removeMusicToPlaylistService(
   const music = await musicRepository.findOneBy({ id: musicId });
   if (!music) throw new AppError(404, "Music not found");
 
-  const playlist = await playlistRepository.findOne({
-    where: { id: id },
-    relations: ["musics"],
-  });
+  const playlist = await playlistRepository.findOneBy({ id });
   if (!playlist) throw new AppError(404, "Playlist not found");
 
   const index = playlist.musics.findIndex((music) => music.id === musicId);

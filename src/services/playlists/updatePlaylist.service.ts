@@ -14,9 +14,12 @@ async function updatePlaylistService(
   const playlist = await playlistRepository.findOneBy({ id });
   if (!playlist) throw new AppError(404, "Playlist not found");
 
-  const updatedPlaylist = await playlistRepository.update(id, { name });
+  await playlistRepository.update(id, { name });
 
-  return { ...playlist, ...updatedPlaylist };
+  const playlistRefreshed = await playlistRepository.findOneBy({ id });
+  if (!playlistRefreshed) throw new AppError(404, "Playlist not found");
+
+  return playlistRefreshed;
 }
 
 export default updatePlaylistService;

@@ -10,7 +10,7 @@ async function deletePlaylistService(id: string): Promise<string> {
 
   await playlistRepository.delete(id);
 
-  return "User deleted successfully";
+  return "Playlist deleted successfully";
 }
 
 export default deletePlaylistService;

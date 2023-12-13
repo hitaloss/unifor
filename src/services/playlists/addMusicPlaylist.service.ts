@@ -14,15 +14,15 @@ async function addMusicToPlaylistService(
   const music = await musicRepository.findOneBy({ id: musicId });
   if (!music) throw new AppError(404, "Music not found");
 
-  const playlist = await playlistRepository.findOne({
-    where: { id: id },
-    relations: ["musics"],
-  });
+  const playlist = await playlistRepository.findOneBy({ id });
   if (!playlist) throw new AppError(404, "Playlist not found");
 
   playlist.musics.push(music);
 
-  const updatedPlaylist = await playlistRepository.save(playlist);
+  await playlistRepository.save(playlist);
+
+  const updatedPlaylist = await playlistRepository.findOneBy({ id });
+  if (!updatedPlaylist) throw new AppError(404, "Playlist not found");
 
   return updatedPlaylist;
 }
