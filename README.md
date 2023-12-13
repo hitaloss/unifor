@@ -1,6 +1,6 @@
 # Unifor task
 
-##Copie o conteúdo de .env.example e jogue em um arquivo .env na pasta raíz com as devidas credenciais
+## Copie o conteúdo de .env.example e jogue em um arquivo .env na pasta raíz com as devidas credenciais
 
 ### Necessário possuir POSTGRESQL instalado na máquina.
 
